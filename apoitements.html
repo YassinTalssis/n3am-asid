@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Dashboard - Appointments</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            padding-top: 56px;
+            background-color: #343a40;
+            width: 250px;
+        }
+        .sidebar a {
+            color: #adb5bd;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        .sidebar a:hover {
+            color: #ffffff;
+            background-color: #495057;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .main-title {
+            margin-top: 20px;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+        .container-fluid1{
+            padding: 70px; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Doctor's Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar bg-dark">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="patients.html"><i class="fas fa-user-md"></i> Patients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.html"><i class="fas fa-chart-bar"></i> Statistics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="apoitements.html"><i class="fas fa-calendar-check"></i> Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="reports.html"><i class="fas fa-file-medical"></i> Reports</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid1">
+            <div class="row mb-4">
+                <div class="col">
+                    <button class="btn-primary" data-bs-toggle="modal" data-bs-target="#addAppointmentModal">
+                        <i class="fas fa-plus"></i> Add Appointment
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>CNI</th>
+                            <th>Patient Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Reason</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example appointment data -->
+                        <tr>
+                            <td>CNI123</td>
+                            <td>Amine tantan</td>
+                            <td>2024-05-30</td>
+                            <td>10:00 AM</td>
+                            <td>Regular Check-up</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editAppointmentModal"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CnI4522</td>
+                            <td>Yassin talssis </td>
+                            <td>2024-05-31</td>
+                            <td>11:00 AM</td>
+                            <td>other</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editAppointmentModal"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CNi14782</td>
+                            <td>Othman Smith</td>
+                            <td>2024-05-31</td>
+                            <td>02:00 PM</td>
+                            <td>Flu Symptoms</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editAppointmentModal"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                            </td>
+                        </tr>
+                        <!-- Add more appointments as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Appointment Modal -->
+    <div class="modal fade" id="addAppointmentModal" tabindex="-1" aria-labelledby="addAppointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addAppointmentModalLabel">Add Appointment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="patientCNI" class="form-label">Patient CNI</label>
+                            <input type="text" class="form-control" id="patientName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="patientName" class="form-label">Patient Name</label>
+                            <input type="text" class="form-control" id="patientName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="appointmentDate" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="appointmentDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="appointmentTime" class="form-label">Time</label>
+                            <input type="time" class="form-control" id="appointmentTime">
+                        </div>
+                        <div class="mb-3">
+                            <label for="appointmentReason" class="form-label">Reason</label>
+                            <textarea class="form-control" id="appointmentReason" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Appointment Modal -->
+    <div class="modal fade" id="editAppointmentModal" tabindex="-1" aria-labelledby="editAppointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editAppointmentModalLabel">Edit Appointment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="editPatientName" class="form-label">Patient Name</label>
+                            <input type="text" class="form-control" id="editPatientName" value="John Doe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAppointmentDate" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="editAppointmentDate" value="2024-05-30">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAppointmentTime" class="form-label">Time</label>
+                            <input type="time" class="form-control" id="editAppointmentTime" value="10:00">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAppointmentReason" class="form-label">Reason</label>
+                            <textarea class="form-control" id="editAppointmentReason" rows="3">Regular Check-up</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

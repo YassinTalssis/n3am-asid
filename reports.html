@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Dashboard - Patient Reports</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            
+            background: url('https://www.example.com/medical-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            padding-top: 56px;
+            background-color: #343a40;
+            width: 250px;
+        }
+        .sidebar a {
+            color: #adb5bd;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        .sidebar a:hover {
+            color: #ffffff;
+            background-color: #495057;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .main-title {
+            margin-top: 20px;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Doctor's Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar bg-dark">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="patients.html"><i class="fas fa-user-md"></i> Patients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.html"><i class="fas fa-chart-bar"></i> Statistics</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="apoitements.html"><i class="fas fa-calendar-check"></i> Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="reports.html"><i class="fas fa-file-medical"></i> Reports</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReportModal">
+                        <i class="fas fa-plus"></i> Add Report
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Patient Name</th>
+                            <th>Date</th>
+                            <th>Report Type</th>
+                            <th>Details</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example report data -->
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>2024-05-30</td>
+                            <td>Blood Test</td>
+                            <td>Normal</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editReportModal"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Smith</td>
+                            <td>2024-05-31</td>
+                            <td>X-Ray</td>
+                            <td>Fracture in left arm</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editReportModal"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                            </td>
+                        </tr>
+                        <!-- Add more reports as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Report Modal -->
+    <div class="modal fade" id="addReportModal" tabindex="-1" aria-labelledby="addReportModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addReportModalLabel">Add Report</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="reportPatientName" class="form-label">Patient Name</label>
+                            <input type="text" class="form-control" id="reportPatientName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="reportDate" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="reportDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="reportType" class="form-label">Report Type</label>
+                            <input type="text" class="form-control" id="reportType">
+                        </div>
+                        <div class="mb-3">
+                            <label for="reportDetails" class="form-label">Details</label>
+                            <textarea class="form-control" id="reportDetails" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Report</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Report Modal -->
+    <div class="modal fade" id="editReportModal" tabindex="-1" aria-labelledby="editReportModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editReportModalLabel">Edit Report</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="editReportPatientName" class="form-label">Patient Name</label>
+                            <input type="text" class="form-control" id="editReportPatientName" value="John Doe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editReportDate" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="editReportDate" value="2024-05-30">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editReportType" class="form-label">Report Type</label>
+                            <input type="text" class="form-control" id="editReportType" value="Blood Test">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editReportDetails" class="form-label">Details</label>
+                            <textarea class="form-control" id="editReportDetails" rows="3">Normal</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
