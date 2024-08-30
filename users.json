@@ -1,0 +1,10 @@
+{
+    "receptionist@example.com": {
+        "password": "receptionist_password",
+        "role": "receptionist"
+    },
+    "doctor@example.com": {
+        "password": "doctor_password",
+        "role": "doctor"
+    }
+}
